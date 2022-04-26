@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ChessPieceController : MonoBehaviour
 {
-    //!!!AD CHECK FOR ANY OTHER OBJECT IN SCENE SELECTED!!! in onMouseEnter
-
     //components and objects
-    [SerializeField] Color teamColor;
+    Color teamColor;
+    GameManager gameManager;
 
     //values
-    //only serializeField, to check in inspector, dont set vaules there!
     Vector3 position;
-    bool isSelected;
     Color hoverColor = new Color(1, 0.92f, 0.016f, 1);
     Color selectionColor = new Color(1,0,0,1);
+    bool thisIsSelected;
 
 
     // Start is called before the first frame update
@@ -32,13 +30,14 @@ public class ChessPieceController : MonoBehaviour
     private void ObjectSetup()
     {
         teamColor = GetComponent<Renderer>().material.color;
-        isSelected = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        thisIsSelected = false;
     }
 
     //changes color of current hovered over object, changes back color of previous object before
     private void OnMouseEnter()
     {
-        if(!isSelected) //!!!AD CHECK FOR ANY OTHER OBJECT IN SCENE SELECTED!!!
+        if(!gameManager.GetPiceIsSelected())
         {
             GetComponent<Renderer>().material.color = hoverColor;
             Debug.Log("Enter");
@@ -51,17 +50,19 @@ public class ChessPieceController : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isSelected)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !gameManager.GetPiceIsSelected())
         {
             GetComponent<Renderer>().material.color = selectionColor;
-            isSelected = true;
+            gameManager.SetPiceIsSelected(true);
+            this.thisIsSelected = true;
             Debug.Log("Selected");
         }
 
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && isSelected)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && gameManager.GetPiceIsSelected() && this.thisIsSelected)
         {
             GetComponent<Renderer>().material.color = hoverColor;
-            isSelected = false;
+            gameManager.SetPiceIsSelected(false);
+            this.thisIsSelected = false;
             Debug.Log("Deselected");
 
         }
@@ -69,7 +70,7 @@ public class ChessPieceController : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!isSelected)
+        if (!gameManager.GetPiceIsSelected())
         {
             GetComponent<Renderer>().material.color = teamColor;
             Debug.Log("Exit");
