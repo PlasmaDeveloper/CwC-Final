@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 93550583}
   - component: {fileID: 93550582}
   - component: {fileID: 93550581}
+  - component: {fileID: 93550584}
   m_Layer: 0
   m_Name: King White
   m_TagString: Untagged
@@ -503,6 +504,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93550579}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &93550584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93550579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &150574530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1232,7 @@ GameObject:
   - component: {fileID: 291130850}
   - component: {fileID: 291130849}
   - component: {fileID: 291130848}
+  - component: {fileID: 291130851}
   m_Layer: 0
   m_Name: Bishop White
   m_TagString: Untagged
@@ -1301,6 +1316,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291130846}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &291130851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291130846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &310956173
 GameObject:
   m_ObjectHideFlags: 0
@@ -6613,6 +6641,7 @@ GameObject:
   - component: {fileID: 1890429530}
   - component: {fileID: 1890429529}
   - component: {fileID: 1890429528}
+  - component: {fileID: 1890429531}
   m_Layer: 0
   m_Name: Knight White
   m_TagString: Untagged
@@ -6696,6 +6725,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890429526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1890429531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890429526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1890794267
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,6 +7320,7 @@ GameObject:
   - component: {fileID: 1997103697}
   - component: {fileID: 1997103696}
   - component: {fileID: 1997103695}
+  - component: {fileID: 1997103698}
   m_Layer: 0
   m_Name: Queen White
   m_TagString: Untagged
@@ -7361,6 +7404,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997103693}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1997103698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997103693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2021674134
 GameObject:
   m_ObjectHideFlags: 0
@@ -7373,6 +7429,7 @@ GameObject:
   - component: {fileID: 2021674138}
   - component: {fileID: 2021674137}
   - component: {fileID: 2021674136}
+  - component: {fileID: 2021674139}
   m_Layer: 0
   m_Name: Tower White
   m_TagString: Untagged
@@ -7456,6 +7513,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021674134}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2021674139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021674134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2022733534
 GameObject:
   m_ObjectHideFlags: 0
