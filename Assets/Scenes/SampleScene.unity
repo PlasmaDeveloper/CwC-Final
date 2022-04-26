@@ -516,7 +516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &150574530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &310956173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,6 +1745,122 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383781249}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &397460093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397460095}
+  - component: {fileID: 397460094}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &397460094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397460093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78889ab26e5bc44dbe0393070550155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piceIsSelected: 0
+  line1:
+  - {fileID: 1754891533}
+  - {fileID: 1391614391}
+  - {fileID: 557970343}
+  - {fileID: 659239596}
+  - {fileID: 199918392}
+  - {fileID: 547671956}
+  - {fileID: 68108746}
+  - {fileID: 213003579}
+  line2:
+  - {fileID: 357468902}
+  - {fileID: 1596365345}
+  - {fileID: 1517577677}
+  - {fileID: 980024244}
+  - {fileID: 1463899087}
+  - {fileID: 179609590}
+  - {fileID: 1225633323}
+  - {fileID: 977579706}
+  line3:
+  - {fileID: 383781249}
+  - {fileID: 1033267425}
+  - {fileID: 777430690}
+  - {fileID: 2064249016}
+  - {fileID: 495793758}
+  - {fileID: 780997173}
+  - {fileID: 581418550}
+  - {fileID: 638109961}
+  line4:
+  - {fileID: 515699564}
+  - {fileID: 1675071080}
+  - {fileID: 976852424}
+  - {fileID: 1640356215}
+  - {fileID: 1890794267}
+  - {fileID: 197862160}
+  - {fileID: 835903309}
+  - {fileID: 1543947379}
+  line5:
+  - {fileID: 1921179054}
+  - {fileID: 1394714427}
+  - {fileID: 1218787856}
+  - {fileID: 1769069811}
+  - {fileID: 867643152}
+  - {fileID: 1494092322}
+  - {fileID: 1968126145}
+  - {fileID: 150574530}
+  line6:
+  - {fileID: 2114379349}
+  - {fileID: 349871520}
+  - {fileID: 778330047}
+  - {fileID: 1263734277}
+  - {fileID: 1373351291}
+  - {fileID: 44576410}
+  - {fileID: 1077318662}
+  - {fileID: 1227848464}
+  line7:
+  - {fileID: 1243521022}
+  - {fileID: 1543715821}
+  - {fileID: 321986262}
+  - {fileID: 1993788963}
+  - {fileID: 1589025896}
+  - {fileID: 192742777}
+  - {fileID: 1480264956}
+  - {fileID: 1875735444}
+  line8:
+  - {fileID: 1978814058}
+  - {fileID: 595124959}
+  - {fileID: 85795851}
+  - {fileID: 1883192077}
+  - {fileID: 1717745336}
+  - {fileID: 1870371155}
+  - {fileID: 854278658}
+  - {fileID: 2022733534}
+--- !u!4 &397460095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397460093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410642243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,7 +6851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1890794267
 GameObject:
   m_ObjectHideFlags: 0
@@ -7416,7 +7529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2021674134
 GameObject:
   m_ObjectHideFlags: 0
@@ -7525,7 +7637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2022733534
 GameObject:
   m_ObjectHideFlags: 0
