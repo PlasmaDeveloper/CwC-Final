@@ -44,7 +44,7 @@ public class BoardController : MonoBehaviour
     {
         if (thisIsHighlighted && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //move ChessPice
+            gameManager.ManageMovement(transform.position);
         }
     }
 
@@ -53,6 +53,7 @@ public class BoardController : MonoBehaviour
         if (thisIsHighlighted)
         {
             GetComponent<Renderer>().material.color = highlightColor;
+            gameManager.EndHilightBoardElement();
         }
     }
 

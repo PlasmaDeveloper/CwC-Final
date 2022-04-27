@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     GameObject selectedPiece;
     GameObject highlightedField;
 
-    //dont deleat SerializeFiled - trust me, you will regret it
+    //dont delete SerializeFiled - trust me, you will regret it
     [SerializeField] GameObject[] line1;
     [SerializeField] GameObject[] line2;
     [SerializeField] GameObject[] line3;
@@ -130,6 +130,11 @@ public class GameManager : MonoBehaviour
         boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetHighlightColor();
         boardElement.GetComponent<BoardController>().SetThisIsHighlighted(true);
         highlightedField = boardElement;
+    }
+
+    public void ManageMovement(Vector3 position)
+    {
+        selectedPiece.GetComponent<ChessPieceController>().MovePice(position);
     }
 
     public void EndHilightBoardElement()

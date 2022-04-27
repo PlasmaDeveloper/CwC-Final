@@ -14,6 +14,7 @@ public class ChessPieceController : MonoBehaviour
     bool thisIsSelected;
 
     int defaultFieldsToMove = 1;
+    float positionOffset;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class ChessPieceController : MonoBehaviour
         teamColor = GetComponent<Renderer>().material.color;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         thisIsSelected = false;
+        positionOffset = transform.position.y;
     }
 
     //changes color of current hovered over object, changes back color of previous object before
@@ -116,6 +118,13 @@ public class ChessPieceController : MonoBehaviour
         gameManager.SetReactedToSelection(false);
         gameManager.EndHilightBoardElement();
         //Debug.Log("Mouse:ObjectDeselected");
+    }
+
+    public void MovePice(Vector3 position)
+    {
+        Vector3 newPosition = position + new Vector3(0, positionOffset, 0);
+        transform.position = newPosition;
+        DeselectPice();
     }
 }
 
