@@ -52,20 +52,12 @@ public class ChessPieceController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !gameManager.GetPiceIsSelected())
         {
-            GetComponent<Renderer>().material.color = selectionColor;
-            gameManager.SetPiceIsSelected(true, this.gameObject);
-            this.thisIsSelected = true;
-            //Debug.Log("Mouse:ObjectSelected");
+            SelectPice();
         }
 
         else if (Input.GetKeyDown(KeyCode.Mouse0) && gameManager.GetPiceIsSelected() && this.thisIsSelected)
         {
-            GetComponent<Renderer>().material.color = hoverColor;
-            gameManager.SetPiceIsSelected(false, null);
-            this.thisIsSelected = false;
-            gameManager.SetReactedToSelection(false);
-            //Debug.Log("Mouse:ObjectDeselected");
-
+            DeselectPice();
         }
     }
 
@@ -101,11 +93,29 @@ public class ChessPieceController : MonoBehaviour
             movementAdd = new Vector3(-(this.defaultFieldsToMove * 2),0, 0);
         }
 
-        Debug.Log("position: " + transform.position);
+        //Debug.Log("position: " + transform.position);
         Vector3 movePosition = transform.position + movementAdd;
-        Debug.Log("moveToPosition: " + movePosition);
+        //Debug.Log("moveToPosition: " + movePosition);
         return movePosition;
 
+    }
+
+    private void SelectPice()
+    {
+        GetComponent<Renderer>().material.color = selectionColor;
+        gameManager.SetPiceIsSelected(true, this.gameObject);
+        thisIsSelected = true;
+        //Debug.Log("Mouse:ObjectSelected");
+    }
+
+    private void DeselectPice()
+    {
+        GetComponent<Renderer>().material.color = hoverColor;
+        gameManager.SetPiceIsSelected(false, null);
+        thisIsSelected = false;
+        gameManager.SetReactedToSelection(false);
+        gameManager.EndHilightBoardElement();
+        //Debug.Log("Mouse:ObjectDeselected");
     }
 }
 

@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     //components and objects
 
     //values
-    [SerializeField] bool piceIsSelected;
-    [SerializeField] bool reactedToSelection;
-    [SerializeField] GameObject selectedPiece;
+    bool piceIsSelected;
+    bool reactedToSelection;
+    GameObject selectedPiece;
+    GameObject highlightedField;
 
+    //dont deleat SerializeFiled - trust me, you will regret it
     [SerializeField] GameObject[] line1;
     [SerializeField] GameObject[] line2;
     [SerializeField] GameObject[] line3;
@@ -56,14 +58,11 @@ public class GameManager : MonoBehaviour
             //Debug.Log("GameControllerPositionToHilight" + highlightPosition);
             GameObject[] lineToUse = ScanForRightLine(highlightPosition);
             //Debug.Log("GameControllerLineToUse: " + lineToUse);
-            foreach (GameObject line in lineToUse)
+            foreach (GameObject boardField in lineToUse)
             {
-                Debug.Log("Current Line: " + line);
-                if (line.transform.position == highlightPosition)
+                if (boardField.transform.position.x == highlightPosition.x)
                 {
-                    Destroy(line.GetComponent<Renderer>().material);
-                    
-                    line.GetComponent<Renderer>().material.color = new Color(1, 0.64f, 0, 1);
+                    HiglightBoardElement(boardField);
                 }
             }
 
@@ -81,39 +80,39 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 lineToUse = line1;
-                Debug.Log("Case0: " + lineToUse);
+                //Debug.Log("Case0: " + lineToUse);
                 break;
             case 2:
                 lineToUse = line2;
-                Debug.Log("Case2: " + lineToUse);
+                //Debug.Log("Case2: " + lineToUse);
                 break;
             case 4:
                 lineToUse = line3;
-                Debug.Log("Case4: " + lineToUse);
+                //Debug.Log("Case4: " + lineToUse);
                 break;
             case 6:
                 lineToUse = line4;
-                Debug.Log("Case6: " + lineToUse);
+                //Debug.Log("Case6: " + lineToUse);
                 break;
             case 8:
                 lineToUse = line5;
-                Debug.Log("Case8: " + lineToUse);
+                //Debug.Log("Case8: " + lineToUse);
                 break;
             case 10:
                 lineToUse = line6;
-                Debug.Log("Case10: " + lineToUse);
+                //Debug.Log("Case10: " + lineToUse);
                 break;
             case 12:
                 lineToUse = line7;
-                Debug.Log("Case12: " + lineToUse);
+                //Debug.Log("Case12: " + lineToUse);
                 break;
             case 14:
                 lineToUse = line8;
-                Debug.Log("Case14: " + lineToUse);
+                //Debug.Log("Case14: " + lineToUse);
                 break;
             default:
                 lineToUse = null;
-                Debug.Log("DefaultCase - something went wrong");
+                Debug.Log("DefaultCase - something went wrong"); //Maybe add an exception
                 break;
         }
 
@@ -123,5 +122,24 @@ public class GameManager : MonoBehaviour
     public void SetReactedToSelection(bool value)
     {
         this.reactedToSelection = value;
+    }
+
+    void HiglightBoardElement(GameObject boardElement)
+    {
+        //Debug.Log("HilightRun");
+        boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetHighlightColor();
+        boardElement.GetComponent<BoardController>().SetThisIsHighlighted(true);
+        highlightedField = boardElement;
+    }
+
+    public void EndHilightBoardElement()
+    {
+        if (highlightedField != null)
+        {
+            GameObject boardElement = highlightedField;
+            boardElement.GetComponent<BoardController>().SetThisIsHighlighted(false);
+            boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetBoardColor();
+
+        }
     }
 }
