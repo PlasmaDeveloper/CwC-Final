@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1158654938949102951}
   - component: {fileID: 8013934261124191836}
   - component: {fileID: 8179685409203804023}
-  - component: {fileID: 1453313045459755731}
+  - component: {fileID: 2947652399309962526}
   m_Layer: 0
   m_Name: Tower Black
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1453313045459755731
+--- !u!114 &2947652399309962526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +105,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 845151513067285071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Script: {fileID: 11500000, guid: 52432d1eed118fd428696e9a27858280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
