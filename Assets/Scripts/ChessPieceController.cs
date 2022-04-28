@@ -14,6 +14,7 @@ public class ChessPieceController : MonoBehaviour
     bool thisIsSelected;
 
     int defaultFieldsToMove = 1;
+    char[] moveDirections = {'f'}; //where it can move to, default object can only move forward
     float positionOffset;
 
 
@@ -103,30 +104,36 @@ public class ChessPieceController : MonoBehaviour
     }
 
     //has to be inverted for black team (maybe improve later with local movement, the black team is roatad by 180Åã)
-    public Vector3 CalculateMovePosition(char direction)
+    //returns List type Vector3 with all possible positions where the pice can move to
+    public List<Vector3> CalculateMovePosition()
     {
-        Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
-        //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
-        if (direction == 'f')
+        List<Vector3> movePosition = new List<Vector3>();
+
+        foreach (char direction in moveDirections)
         {
-            movementAdd = new Vector3(0, 0, (this.defaultFieldsToMove * 2));
-        }
-        else if (direction == 'b')
-        {
-            movementAdd = new Vector3(0, 0, -(this.defaultFieldsToMove * 2));
-        }
-        else if (direction == 'r')
-        {
-            movementAdd = new Vector3((this.defaultFieldsToMove * 2), 0, 0);
-        }
-        else if (direction == 'l')
-        {
-            movementAdd = new Vector3(-(this.defaultFieldsToMove * 2), 0, 0);
+
+            Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
+                                                        //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
+            if (direction == 'f')
+            {
+                movementAdd = new Vector3(0, 0, (this.defaultFieldsToMove * 2));
+            }
+            else if (direction == 'b')
+            {
+                movementAdd = new Vector3(0, 0, -(this.defaultFieldsToMove * 2));
+            }
+            else if (direction == 'r')
+            {
+                movementAdd = new Vector3((this.defaultFieldsToMove * 2), 0, 0);
+            }
+            else if (direction == 'l')
+            {
+                movementAdd = new Vector3(-(this.defaultFieldsToMove * 2), 0, 0);
+            }
+
+            movePosition.Add(transform.position + movementAdd);
         }
 
-        //Debug.Log("position: " + transform.position);
-        Vector3 movePosition = transform.position + movementAdd;
-        //Debug.Log("moveToPosition: " + movePosition);
         return movePosition;
 
     }

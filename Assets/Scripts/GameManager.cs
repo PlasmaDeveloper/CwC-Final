@@ -43,20 +43,33 @@ public class GameManager : MonoBehaviour
     //!!!currently hardcoded with only move forward, has to get the posible movement directions from ChessPiceController later!!!
     private void HighlightFieldsToMove()
     {
+        List<Vector3> highlightPosition = new List<Vector3>();
+        List<GameObject[]> linesToUse = new List<GameObject[]>();
+
         if (piceIsSelected && !reactedToSelection)
         {
-            Vector3 highlightPosition = selectedPiece.GetComponent<ChessPieceController>().CalculateMovePosition('f');
-            //Debug.Log("GameControllerPositionToHilight" + highlightPosition);
-            GameObject[] lineToUse = ScanForRightLine(highlightPosition);
-            //Debug.Log("GameControllerLineToUse: " + lineToUse);
-            foreach (GameObject boardField in lineToUse)
+            highlightPosition.AddRange(selectedPiece.GetComponent<ChessPieceController>().CalculateMovePosition());
+
+            foreach (Vector3 hPosition in highlightPosition)
             {
-                if (boardField.transform.position.x == highlightPosition.x)
-                {
-                    HiglightBoardElement(boardField);
-                }
+                linesToUse.Add(ScanForRightLine(hPosition));
             }
 
+            foreach (GameObject[] line in linesToUse)
+            {
+                foreach (GameObject boardField in line)
+                {
+                    foreach (Vector3 hPosition in highlightPosition)
+                    {
+                        if (boardField.transform.position.x == hPosition.x && !boardField.GetComponent<BoardController>().GetIsOccupied())
+                        {
+                            HighlightBoardElement(boardField);
+                        }
+                    }
+
+                    
+                }
+            }
             reactedToSelection = true;
         }
 
@@ -111,7 +124,7 @@ public class GameManager : MonoBehaviour
         return lineToUse;
     }
 
-    void HiglightBoardElement(GameObject boardElement)
+    void HighlightBoardElement(GameObject boardElement)
     {
         //Debug.Log("HighlightRun");
         boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetHighlightColor();

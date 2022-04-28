@@ -10,6 +10,7 @@ public class BoardController : MonoBehaviour
 
     //values
     bool thisIsHighlighted;
+    [SerializeField] bool isOccupied;
     Color hoverColor = new Color(1, 0.92f, 0.016f, 1);
     Color highlightColor = new Color(1, 0, 1, 1);
 
@@ -53,8 +54,20 @@ public class BoardController : MonoBehaviour
         if (thisIsHighlighted)
         {
             EndHooverBoardElement();
-            gameManager.EndHighlightBoardElement();
+            //gameManager.EndHighlightBoardElement();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger Enter");
+        isOccupied = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Trigger Exit");
+        isOccupied = false;
     }
 
     private void HooverBoardElement()
@@ -85,5 +98,15 @@ public class BoardController : MonoBehaviour
     public Color GetBoardColor()
     {
         return this.boardColor;
+    }
+
+    public bool GetIsOccupied()
+    {
+        return isOccupied;
+    }
+
+    public void SetIsOccupied(bool  oc)
+    {
+        this.isOccupied = oc;
     }
 }
