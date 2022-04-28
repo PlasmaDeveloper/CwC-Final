@@ -5,19 +5,19 @@ using UnityEngine;
 public class ChessPieceController : MonoBehaviour
 {
     //components and objects
-    Color teamColor;
-    GameManager gameManager;
+    protected Color teamColor;
+    protected GameManager gameManager;
 
     //values
-    Color hoverColor = new Color(1, 0.92f, 0.016f, 1);
-    Color selectionColor = new Color(1,0,0,1);
-    bool thisIsSelected;
+    protected Color hoverColor = new Color(1, 0.92f, 0.016f, 1);
+    protected Color selectionColor = new Color(1,0,0,1);
+    protected bool thisIsSelected;
 
-    int defaultFieldsToMove = 1;
-    char[] moveDirections = {'f'}; //where it can move to, default object can only move forward
+    protected List<int> defaultFieldsToMove = new List<int>();
+    protected char[] moveDirections = {'f'}; //where it can move to, default object can only move forward
     //int defaultCaptureMove = 1; //field to move when able to capture
     //char[] captureDirections = {'f'}; //in which direction it can capture enemies
-    float positionOffset;
+    protected float positionOffset;
 
 
     // Start is called before the first frame update
@@ -32,12 +32,13 @@ public class ChessPieceController : MonoBehaviour
        
     }
 
-    private void ObjectSetup()
+    protected void ObjectSetup()
     {
         teamColor = GetComponent<Renderer>().material.color;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         thisIsSelected = false;
         positionOffset = transform.position.y;
+        defaultFieldsToMove.Add(1);
     }
 
     //changes color of current hovered over object, changes back color of previous object before
@@ -46,7 +47,7 @@ public class ChessPieceController : MonoBehaviour
         if(!gameManager.GetPiceIsSelected())
         {
             //Debug.Log("Mouse:ObjectEnter");
-            HoovertPice();
+            HooverPice();
         }
         
 
@@ -87,7 +88,7 @@ public class ChessPieceController : MonoBehaviour
 
     private void DeselectPice()
     {
-        HoovertPice();
+        HooverPice();
         thisIsSelected = false;
         gameManager.SetPiceIsSelected(false, null);
         gameManager.SetReactedToSelection(false);
@@ -95,7 +96,7 @@ public class ChessPieceController : MonoBehaviour
         //Debug.Log("Mouse:ObjectDeselected");
     }
 
-    private void HoovertPice()
+    private void HooverPice()
     {
         GetComponent<Renderer>().material.color = hoverColor;
     }
@@ -107,33 +108,37 @@ public class ChessPieceController : MonoBehaviour
 
     //has to be inverted for black team (maybe improve later with local movement, the black team is roatad by 180Åã)
     //returns List type Vector3 with all possible positions where the pice can move to
-    public List<Vector3> CalculateMovePosition()
+    public virtual List<Vector3> CalculateMovePosition()
     {
         List<Vector3> movePosition = new List<Vector3>();
 
         foreach (char direction in moveDirections)
         {
 
-            Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
-                                                        //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
-            if (direction == 'f')
+            foreach (int moveSteps in defaultFieldsToMove)
             {
-                movementAdd = new Vector3(0, 0, (defaultFieldsToMove * 2));
-            }
-            else if (direction == 'b')
-            {
-                movementAdd = new Vector3(0, 0, -(defaultFieldsToMove * 2));
-            }
-            else if (direction == 'r')
-            {
-                movementAdd = new Vector3((defaultFieldsToMove * 2), 0, 0);
-            }
-            else if (direction == 'l')
-            {
-                movementAdd = new Vector3(-(defaultFieldsToMove * 2), 0, 0);
-            }
+                Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
+                                                            //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
+                if (direction == 'f')
+                {
+                    movementAdd = new Vector3(0, 0, (moveSteps * 2));
+                }
+                else if (direction == 'b')
+                {
+                    movementAdd = new Vector3(0, 0, -(moveSteps * 2));
+                }
+                else if (direction == 'r')
+                {
+                    movementAdd = new Vector3((moveSteps * 2), 0, 0);
+                }
+                else if (direction == 'l')
+                {
+                    movementAdd = new Vector3(-(moveSteps * 2), 0, 0);
+                }
 
-            movePosition.Add(transform.position + movementAdd);
+                movePosition.Add(transform.position + movementAdd);
+            }
+            
         }
 
         return movePosition;

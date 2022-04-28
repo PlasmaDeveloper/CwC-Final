@@ -60,13 +60,13 @@ public class BoardController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter");
+        //Debug.Log("Trigger Enter");
         isOccupied = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Trigger Exit");
+        //Debug.Log("Trigger Exit");
         isOccupied = false;
     }
 

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     bool reactedToSelection; //if Programm already has responded to a selected pice
     bool reactedToSelectionCapture; //if Programm has already respondet to a selected pice with highlighting capture fields
     GameObject selectedPiece;
-    GameObject highlightedField;
+    List<GameObject> highlightedField = new List<GameObject>();
 
     //dont delete SerializeFiled - not for test-viewing in Inspector, but for code functionality
     [SerializeField] GameObject[] line1;
@@ -163,9 +163,10 @@ public class GameManager : MonoBehaviour
     void HighlightBoardElement(GameObject boardElement)
     {
         //Debug.Log("HighlightRun");
+
         boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetHighlightColor();
         boardElement.GetComponent<BoardController>().SetThisIsHighlighted(true);
-        highlightedField = boardElement;
+        highlightedField.Add(boardElement);
     }
 
     //bridge between BoardController (on mousehoover + klick) and ChessPiceController(to move it)
@@ -176,11 +177,15 @@ public class GameManager : MonoBehaviour
 
     public void EndHighlightBoardElement()
     {
-        if (highlightedField != null)
+        if (highlightedField.Count != 0)
         {
-            GameObject boardElement = highlightedField;
-            boardElement.GetComponent<BoardController>().SetThisIsHighlighted(false);
-            boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetBoardColor();
+            foreach (GameObject hF in highlightedField)
+            {
+                GameObject boardElement = hF;
+                boardElement.GetComponent<BoardController>().SetThisIsHighlighted(false);
+                boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetBoardColor();
+            }
+            highlightedField.Clear();
 
         }
     }
