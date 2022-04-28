@@ -15,6 +15,8 @@ public class ChessPieceController : MonoBehaviour
 
     int defaultFieldsToMove = 1;
     char[] moveDirections = {'f'}; //where it can move to, default object can only move forward
+    //int defaultCaptureMove = 1; //field to move when able to capture
+    //char[] captureDirections = {'f'}; //in which direction it can capture enemies
     float positionOffset;
 
 
@@ -116,19 +118,19 @@ public class ChessPieceController : MonoBehaviour
                                                         //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
             if (direction == 'f')
             {
-                movementAdd = new Vector3(0, 0, (this.defaultFieldsToMove * 2));
+                movementAdd = new Vector3(0, 0, (defaultFieldsToMove * 2));
             }
             else if (direction == 'b')
             {
-                movementAdd = new Vector3(0, 0, -(this.defaultFieldsToMove * 2));
+                movementAdd = new Vector3(0, 0, -(defaultFieldsToMove * 2));
             }
             else if (direction == 'r')
             {
-                movementAdd = new Vector3((this.defaultFieldsToMove * 2), 0, 0);
+                movementAdd = new Vector3((defaultFieldsToMove * 2), 0, 0);
             }
             else if (direction == 'l')
             {
-                movementAdd = new Vector3(-(this.defaultFieldsToMove * 2), 0, 0);
+                movementAdd = new Vector3(-(defaultFieldsToMove * 2), 0, 0);
             }
 
             movePosition.Add(transform.position + movementAdd);
@@ -137,6 +139,39 @@ public class ChessPieceController : MonoBehaviour
         return movePosition;
 
     }
+
+    //has to be inverted for black team (maybe improve later with local movement, the black team is roatad by 180Åã)
+    //returns List type Vector3 with all possible positions where the pice can move to, when occupied by an enemy
+    /*public List<Vector3> CalculateCapturePosition()
+    {
+        List<Vector3> capturePosition = new List<Vector3>();
+
+        Vector3 captureMovementAdd = new Vector3(0, 0, 0);
+
+        foreach (char direction in captureDirections)
+        {
+            if (direction == 'f')
+            {
+                captureMovementAdd = new Vector3(0, 0, (defaultCaptureMove * 2));
+            }
+            else if (direction == 'b')
+            {
+                captureMovementAdd = new Vector3(0, 0, -(defaultCaptureMove * 2));
+            }
+            else if (direction == 'r')
+            {
+                captureMovementAdd = new Vector3((defaultCaptureMove * 2), 0, 0);
+            }
+            else if (direction == 'l')
+            {
+                captureMovementAdd = new Vector3(-(defaultCaptureMove * 2), 0, 0);
+            }
+
+            capturePosition.Add(transform.position + captureMovementAdd);
+        }
+
+        return capturePosition;
+    }*/
 
     public void MovePice(Vector3 position)
     {

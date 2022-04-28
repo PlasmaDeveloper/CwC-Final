@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     //values
     bool piceIsSelected;
     bool reactedToSelection; //if Programm already has responded to a selected pice
+    bool reactedToSelectionCapture; //if Programm has already respondet to a selected pice with highlighting capture fields
     GameObject selectedPiece;
     GameObject highlightedField;
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         HighlightFieldsToMove();
+        //HighlightFieldsToCaptureOn();
     }
 
     void SetUpGameManager()
@@ -74,6 +76,40 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    /*private void HighlightFieldsToCaptureOn()
+    {
+        List<Vector3> highlightPosition = new List<Vector3>();
+        List<GameObject[]> linesToUse = new List<GameObject[]>();
+
+        if (piceIsSelected && !reactedToSelectionCapture)
+        {
+            highlightPosition.AddRange(selectedPiece.GetComponent<ChessPieceController>().CalculateCapturePosition());
+
+            foreach (Vector3 hPosition in highlightPosition)
+            {
+                linesToUse.Add(ScanForRightLine(hPosition));
+            }
+
+            foreach (GameObject[] line in linesToUse)
+            { 
+                foreach (GameObject boardField in line)
+                {
+                    foreach (Vector3 hPosition in highlightPosition)
+                    {
+                        if (boardField.transform.position.x == hPosition.x && boardField.GetComponent<BoardController>().GetIsOccupied())
+                        {
+                            HighlightBoardElement(boardField);
+                        }
+                    }
+
+                }
+            }
+
+            reactedToSelectionCapture = true;
+
+        }
+    }*/
 
     //Returns the line(list with GameObjects), where the board element to move to must be located
     private GameObject[] ScanForRightLine(Vector3 rightPosition)
