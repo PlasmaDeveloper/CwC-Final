@@ -36,7 +36,7 @@ public class BoardController : MonoBehaviour
     {
         if (thisIsHighlighted)
         {
-            GetComponent<Renderer>().material.color = hoverColor;
+            HooverBoardElement();
         }
     }
 
@@ -52,9 +52,19 @@ public class BoardController : MonoBehaviour
     {
         if (thisIsHighlighted)
         {
-            GetComponent<Renderer>().material.color = highlightColor;
-            gameManager.EndHilightBoardElement();
+            EndHooverBoardElement();
+            gameManager.EndHighlightBoardElement();
         }
+    }
+
+    private void HooverBoardElement()
+    {
+        GetComponent<Renderer>().material.color = hoverColor;
+    }
+
+    private void EndHooverBoardElement()
+    {
+        GetComponent<Renderer>().material.color = highlightColor;
     }
 
     public void SetThisIsHighlighted(bool tIH)

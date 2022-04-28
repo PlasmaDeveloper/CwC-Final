@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 
     //values
     bool piceIsSelected;
-    bool reactedToSelection;
+    bool reactedToSelection; //if Programm already has responded to a selected pice
     GameObject selectedPiece;
     GameObject highlightedField;
 
-    //dont delete SerializeFiled - trust me, you will regret it
+    //dont delete SerializeFiled - not for test-viewing in Inspector, but for code functionality
     [SerializeField] GameObject[] line1;
     [SerializeField] GameObject[] line2;
     [SerializeField] GameObject[] line3;
@@ -39,22 +39,13 @@ public class GameManager : MonoBehaviour
         this.reactedToSelection = false;
     }
 
-    public bool GetPiceIsSelected()
-    {
-        return this.piceIsSelected;
-    }
-
-    public void SetPiceIsSelected(bool piceIS, GameObject selection)
-    {
-        this.piceIsSelected = piceIS;
-        this.selectedPiece = selection;
-    }
-
+    //when chess pice is selected, this calculates all board elements, you could move to
+    //!!!currently hardcoded with only move forward, has to get the posible movement directions from ChessPiceController later!!!
     private void HighlightFieldsToMove()
     {
         if (piceIsSelected && !reactedToSelection)
         {
-            Vector3 highlightPosition = selectedPiece.GetComponent<ChessPieceController>().Move('f');
+            Vector3 highlightPosition = selectedPiece.GetComponent<ChessPieceController>().CalculateMovePosition('f');
             //Debug.Log("GameControllerPositionToHilight" + highlightPosition);
             GameObject[] lineToUse = ScanForRightLine(highlightPosition);
             //Debug.Log("GameControllerLineToUse: " + lineToUse);
@@ -71,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Returns the line(list with GameObjects), where the board element to move to must be located
     private GameObject[] ScanForRightLine(Vector3 rightPosition)
     {
         //Debug.Log("GameController rightLineInFunctionFULL:" + rightPosition); //currently working
@@ -119,25 +111,21 @@ public class GameManager : MonoBehaviour
         return lineToUse;
     }
 
-    public void SetReactedToSelection(bool value)
-    {
-        this.reactedToSelection = value;
-    }
-
     void HiglightBoardElement(GameObject boardElement)
     {
-        //Debug.Log("HilightRun");
+        //Debug.Log("HighlightRun");
         boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetHighlightColor();
         boardElement.GetComponent<BoardController>().SetThisIsHighlighted(true);
         highlightedField = boardElement;
     }
 
+    //bridge between BoardController (on mousehoover + klick) and ChessPiceController(to move it)
     public void ManageMovement(Vector3 position)
     {
         selectedPiece.GetComponent<ChessPieceController>().MovePice(position);
     }
 
-    public void EndHilightBoardElement()
+    public void EndHighlightBoardElement()
     {
         if (highlightedField != null)
         {
@@ -146,5 +134,21 @@ public class GameManager : MonoBehaviour
             boardElement.GetComponent<Renderer>().material.color = boardElement.GetComponent<BoardController>().GetBoardColor();
 
         }
+    }
+
+    public bool GetPiceIsSelected()
+    {
+        return this.piceIsSelected;
+    }
+
+    public void SetPiceIsSelected(bool piceIS, GameObject selection)
+    {
+        this.piceIsSelected = piceIS;
+        this.selectedPiece = selection;
+    }
+
+    public void SetReactedToSelection(bool value)
+    {
+        this.reactedToSelection = value;
     }
 }

@@ -42,8 +42,8 @@ public class ChessPieceController : MonoBehaviour
     {
         if(!gameManager.GetPiceIsSelected())
         {
-            GetComponent<Renderer>().material.color = hoverColor;
             //Debug.Log("Mouse:ObjectEnter");
+            HoovertPice();
         }
         
 
@@ -67,39 +67,11 @@ public class ChessPieceController : MonoBehaviour
     {
         if (!gameManager.GetPiceIsSelected())
         {
-            GetComponent<Renderer>().material.color = teamColor;
             //Debug.Log("Mouse:ObjectExit");
+            EndHooverPice();
         }
 
         
-    }
-
-    public Vector3 Move(char direction)
-    {
-        Vector3 movementAdd = new Vector3(0,0,0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
-        //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
-        if (direction == 'f')
-        {
-            movementAdd = new Vector3(0, 0, (this.defaultFieldsToMove * 2));
-        }
-        else if (direction == 'b')
-        {
-            movementAdd = new Vector3(0, 0, -(this.defaultFieldsToMove * 2));
-        }
-        else if (direction == 'r')
-        {
-            movementAdd = new Vector3((this.defaultFieldsToMove * 2),0, 0);
-        }
-        else if (direction == 'l')
-        {
-            movementAdd = new Vector3(-(this.defaultFieldsToMove * 2),0, 0);
-        }
-
-        //Debug.Log("position: " + transform.position);
-        Vector3 movePosition = transform.position + movementAdd;
-        //Debug.Log("moveToPosition: " + movePosition);
-        return movePosition;
-
     }
 
     private void SelectPice()
@@ -112,12 +84,50 @@ public class ChessPieceController : MonoBehaviour
 
     private void DeselectPice()
     {
-        GetComponent<Renderer>().material.color = hoverColor;
-        gameManager.SetPiceIsSelected(false, null);
+        HighlightPice();
         thisIsSelected = false;
+        gameManager.SetPiceIsSelected(false, null);
         gameManager.SetReactedToSelection(false);
         gameManager.EndHilightBoardElement();
         //Debug.Log("Mouse:ObjectDeselected");
+    }
+
+    private void HoovertPice()
+    {
+        GetComponent<Renderer>().material.color = hoverColor;
+    }
+
+    private void EndHooverPice()
+    {
+        GetComponent<Renderer>().material.color = teamColor;
+    }
+
+    public Vector3 CalculateMovePosition(char direction)
+    {
+        Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
+        //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
+        if (direction == 'f')
+        {
+            movementAdd = new Vector3(0, 0, (this.defaultFieldsToMove * 2));
+        }
+        else if (direction == 'b')
+        {
+            movementAdd = new Vector3(0, 0, -(this.defaultFieldsToMove * 2));
+        }
+        else if (direction == 'r')
+        {
+            movementAdd = new Vector3((this.defaultFieldsToMove * 2), 0, 0);
+        }
+        else if (direction == 'l')
+        {
+            movementAdd = new Vector3(-(this.defaultFieldsToMove * 2), 0, 0);
+        }
+
+        //Debug.Log("position: " + transform.position);
+        Vector3 movePosition = transform.position + movementAdd;
+        //Debug.Log("moveToPosition: " + movePosition);
+        return movePosition;
+
     }
 
     public void MovePice(Vector3 position)
