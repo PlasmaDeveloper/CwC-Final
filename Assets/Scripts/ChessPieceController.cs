@@ -84,11 +84,11 @@ public class ChessPieceController : MonoBehaviour
 
     private void DeselectPice()
     {
-        HighlightPice();
+        HoovertPice();
         thisIsSelected = false;
         gameManager.SetPiceIsSelected(false, null);
         gameManager.SetReactedToSelection(false);
-        gameManager.EndHilightBoardElement();
+        gameManager.EndHighlightBoardElement();
         //Debug.Log("Mouse:ObjectDeselected");
     }
 
@@ -102,6 +102,7 @@ public class ChessPieceController : MonoBehaviour
         GetComponent<Renderer>().material.color = teamColor;
     }
 
+    //has to be inverted for black team (maybe improve later with local movement, the black team is roatad by 180Åã)
     public Vector3 CalculateMovePosition(char direction)
     {
         Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
