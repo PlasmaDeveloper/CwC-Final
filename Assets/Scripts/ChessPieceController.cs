@@ -14,7 +14,7 @@ public class ChessPieceController : MonoBehaviour
     protected bool thisIsSelected;
 
     protected List<int> defaultFieldsToMove = new List<int>();
-    protected char[] moveDirections = {'f'}; //where it can move to, default object can only move forward
+    protected List<char> moveDirections = new List<char>(); //where it can move to, default object can only move forward
     //int defaultCaptureMove = 1; //field to move when able to capture
     //char[] captureDirections = {'f'}; //in which direction it can capture enemies
     protected float positionOffset;
@@ -39,6 +39,7 @@ public class ChessPieceController : MonoBehaviour
         thisIsSelected = false;
         positionOffset = transform.position.y;
         defaultFieldsToMove.Add(1);
+        moveDirections.Add('f');
     }
 
     //changes color of current hovered over object, changes back color of previous object before
