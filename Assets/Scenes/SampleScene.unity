@@ -740,6 +740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bishop White (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7455259126064076328, guid: da0c9d100ddcc1b49843e09a83a9f94a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7974449135861956865, guid: da0c9d100ddcc1b49843e09a83a9f94a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2275,6 +2279,10 @@ PrefabInstance:
     - target: {fileID: 998944811817685132, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
       propertyPath: m_Name
       value: Tower White
+      objectReference: {fileID: 0}
+    - target: {fileID: 998944811817685132, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2307928220080318757, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
       propertyPath: m_RootOrder
@@ -4046,6 +4054,10 @@ PrefabInstance:
     - target: {fileID: 6886718529468124121, guid: 60465c6df76abda42817d67129e90a61, type: 3}
       propertyPath: m_Name
       value: Knight White (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886718529468124121, guid: 60465c6df76abda42817d67129e90a61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60465c6df76abda42817d67129e90a61, type: 3}
@@ -6329,6 +6341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bishop White
       objectReference: {fileID: 0}
+    - target: {fileID: 7455259126064076328, guid: da0c9d100ddcc1b49843e09a83a9f94a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7974449135861956865, guid: da0c9d100ddcc1b49843e09a83a9f94a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6854,6 +6870,10 @@ PrefabInstance:
     - target: {fileID: 6886718529468124121, guid: 60465c6df76abda42817d67129e90a61, type: 3}
       propertyPath: m_Name
       value: Knight White
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886718529468124121, guid: 60465c6df76abda42817d67129e90a61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60465c6df76abda42817d67129e90a61, type: 3}
@@ -11353,6 +11373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Queen White
       objectReference: {fileID: 0}
+    - target: {fileID: 7743873046216123888, guid: bc75d2c21348a9543a71fb0875cbbe2c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc75d2c21348a9543a71fb0875cbbe2c, type: 3}
 --- !u!4 &2027199970 stripped
@@ -11510,6 +11534,10 @@ PrefabInstance:
     - target: {fileID: 998944811817685132, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
       propertyPath: m_Name
       value: Tower White (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 998944811817685132, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2307928220080318757, guid: 0d971b02a5ffd444882d6c4ce4222353, type: 3}
       propertyPath: m_RootOrder
