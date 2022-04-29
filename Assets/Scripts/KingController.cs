@@ -7,6 +7,17 @@ public class KingController : ChessPieceController
     // Start is called before the first frame update
     void Start()
     {
+        KingSetup();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void KingSetup()
+    {
         ObjectSetup();
         moveDirections.Add('b');
         moveDirections.Add('l');
@@ -15,11 +26,5 @@ public class KingController : ChessPieceController
         moveDirections.Add('e');
         moveDirections.Add('y');
         moveDirections.Add('c');
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
