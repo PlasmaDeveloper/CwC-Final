@@ -10,7 +10,7 @@ public class ChessPieceController : MonoBehaviour
 
     //values
     protected Color hoverColor = new Color(1, 0.92f, 0.016f, 1);
-    protected Color selectionColor = new Color(1,0,0,1);
+    protected Color selectionColor = new Color(1, 0, 0, 1);
     protected bool thisIsSelected;
 
     protected List<int> defaultFieldsToMove = new List<int>();
@@ -29,7 +29,7 @@ public class ChessPieceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     protected void ObjectSetup()
@@ -45,14 +45,14 @@ public class ChessPieceController : MonoBehaviour
     //changes color of current hovered over object, changes back color of previous object before
     private void OnMouseEnter()
     {
-        if(!gameManager.GetPiceIsSelected())
+        if (!gameManager.GetPiceIsSelected())
         {
             //Debug.Log("Mouse:ObjectEnter");
             HooverPice();
         }
-        
 
-        
+
+
     }
 
     private void OnMouseOver()
@@ -76,7 +76,7 @@ public class ChessPieceController : MonoBehaviour
             EndHooverPice();
         }
 
-        
+
     }
 
     private void SelectPice()
@@ -118,28 +118,30 @@ public class ChessPieceController : MonoBehaviour
 
             foreach (int moveSteps in defaultFieldsToMove)
             {
+
+
                 Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
                                                             //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
-                if (direction == 'f')
+
+                switch (direction)
                 {
-                    movementAdd = new Vector3(0, 0, (moveSteps * 2));
-                }
-                else if (direction == 'b')
-                {
-                    movementAdd = new Vector3(0, 0, -(moveSteps * 2));
-                }
-                else if (direction == 'r')
-                {
-                    movementAdd = new Vector3((moveSteps * 2), 0, 0);
-                }
-                else if (direction == 'l')
-                {
-                    movementAdd = new Vector3(-(moveSteps * 2), 0, 0);
+                    case 'f':
+                        movementAdd = new Vector3(0, 0, (moveSteps * 2));
+                        break;
+                    case 'b':
+                        movementAdd = new Vector3(0, 0, -(moveSteps * 2));
+                        break;
+                    case 'l':
+                        movementAdd = new Vector3((moveSteps * 2), 0, 0);
+                        break;
+                    case 'r':
+                        movementAdd = new Vector3(-(moveSteps * 2), 0, 0);
+                        break;
                 }
 
                 movePosition.Add(transform.position + movementAdd);
             }
-            
+
         }
 
         return movePosition;

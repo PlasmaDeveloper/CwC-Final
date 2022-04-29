@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1024546067321397163}
   - component: {fileID: 4723586165701465469}
   - component: {fileID: 7046614426882317225}
-  - component: {fileID: 4193507544568844514}
+  - component: {fileID: -6680285500283490221}
   m_Layer: 0
   m_Name: Queen White
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4193507544568844514
+--- !u!114 &-6680285500283490221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +105,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7743873046216123888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce26a2f8712d134b9be65060252f32a, type: 3}
+  m_Script: {fileID: 11500000, guid: a149a9a62fa027f40ae9dd6f31881568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

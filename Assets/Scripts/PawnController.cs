@@ -12,10 +12,7 @@ public class PawnController : ChessPieceController
     // Start is called before the first frame update
     void Start()
     {
-        ObjectSetup();
-        defaultFieldsToMove.Add(1);
-        defaultFieldsToMove.Add(2);
-        firstMove = true;
+        PawnSetup();
 
     }
 
@@ -23,6 +20,14 @@ public class PawnController : ChessPieceController
     void Update()
     {
         
+    }
+
+    void PawnSetup()
+    {
+        ObjectSetup();
+        defaultFieldsToMove.Add(1);
+        defaultFieldsToMove.Add(2);
+        firstMove = true;
     }
 
     public override List<Vector3> CalculateMovePosition()

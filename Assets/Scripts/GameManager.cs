@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     }
 
     //when chess pice is selected, this calculates all board elements, you could move to
-    //!!!currently hardcoded with only move forward, has to get the posible movement directions from ChessPiceController later!!!
     private void HighlightFieldsToMove()
     {
         List<Vector3> highlightPosition = new List<Vector3>();
@@ -59,11 +58,16 @@ public class GameManager : MonoBehaviour
 
             foreach (GameObject[] line in linesToUse)
             {
+                Debug.Log("Line: " + line);
+
                 foreach (GameObject boardField in line)
                 {
+                    Debug.Log("BoardElement: " + boardField);
+
                     foreach (Vector3 hPosition in highlightPosition)
                     {
-                        if (boardField.transform.position.x == hPosition.x && !boardField.GetComponent<BoardController>().GetIsOccupied())
+                        if (boardField.transform.position.x == hPosition.x && boardField.transform.position.z == hPosition.z &&
+                            !boardField.GetComponent<BoardController>().GetIsOccupied())
                         {
                             HighlightBoardElement(boardField);
                         }
@@ -153,7 +157,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 lineToUse = null;
-                Debug.Log("DefaultCase - something went wrong"); //Maybe add an exception
+                //Debug.Log("DefaultCase - something went wrong"); //Maybe add an exception
                 break;
         }
 

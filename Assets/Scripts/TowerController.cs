@@ -33,4 +33,13 @@ public class TowerController : ChessPieceController
         moveDirections.Add('r');
         moveDirections.Add('b');
     }
+
+    public override List<Vector3> CalculateMovePosition()
+    {
+        List<Vector3> movePosition = new List<Vector3>();
+
+        movePosition.AddRange(base.CalculateMovePosition());
+
+        return movePosition;
+    }
 }
