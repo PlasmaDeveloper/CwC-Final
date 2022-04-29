@@ -58,11 +58,9 @@ public class GameManager : MonoBehaviour
 
             foreach (GameObject[] line in linesToUse)
             {
-                Debug.Log("Line: " + line);
 
                 foreach (GameObject boardField in line)
                 {
-                    Debug.Log("BoardElement: " + boardField);
 
                     foreach (Vector3 hPosition in highlightPosition)
                     {

@@ -121,7 +121,9 @@ public class ChessPieceController : MonoBehaviour
 
 
                 Vector3 movementAdd = new Vector3(0, 0, 0); //add value to current position, to get new position && pos0,0,0, as default, if no ifcase is true(wrong char direction recived)
-                                                            //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
+               //f-forward, l-left, r-right, b-backward && calculate * 2, because fields have the size of 2,1,2
+               //diagonal movement is inspired by the (german) keyboard layout
+               //q-forward left e-forward right y-backward left c-backward right
 
                 switch (direction)
                 {
@@ -137,6 +139,22 @@ public class ChessPieceController : MonoBehaviour
                     case 'r':
                         movementAdd = new Vector3(-(moveSteps * 2), 0, 0);
                         break;
+                    case 'q':
+                        movementAdd = new Vector3((moveSteps * 2),0,(moveSteps * 2));
+                        break;
+                    case 'e':
+                        movementAdd = new Vector3(-(moveSteps * 2), 0, (moveSteps * 2));
+                        break;
+                    case 'y':
+                        movementAdd = new Vector3((moveSteps * 2), 0, -(moveSteps * 2));
+                        break;
+                    case 'c':
+                        movementAdd = new Vector3(-(moveSteps * 2), 0, -(moveSteps * 2));
+                        break;
+                    default:
+                        break;
+
+
                 }
 
                 movePosition.Add(transform.position + movementAdd);

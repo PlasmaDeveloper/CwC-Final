@@ -11,6 +11,10 @@ public class KingController : ChessPieceController
         moveDirections.Add('b');
         moveDirections.Add('l');
         moveDirections.Add('r');
+        moveDirections.Add('q');
+        moveDirections.Add('e');
+        moveDirections.Add('y');
+        moveDirections.Add('c');
     }
 
     // Update is called once per frame
